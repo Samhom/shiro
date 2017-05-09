@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>欢迎主页</title>
+</head>
+<body>
+    ${user.username!"游客"}, 欢迎您的访问! <br/>
+    <hr/>
+    可选操作:
+    <#if user.username??>
+        <a href='/cms/user/page.do'>用户列表</a>
+        <a href="/cms/authority/page.do">权限列表</a>
+        <a href="/cms/permission/page.do">资源列表</a>
+        <a href="/Spring/logout">注销退出</a>
+    <#else>
+        <a href="#" onclick="top.location.href='/cms/logout.do';">前往登录</a>
+    </#if>
+    <hr/>
+</body>
+</html>

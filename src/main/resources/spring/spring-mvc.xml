@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<context:component-scan base-package="com.sanhu.controller"/>
+	
+	<!--配置spring mvc-->
+    <!--1.开启springmvc注解模式
+    	a.自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+    	b.默认提供一系列的功能:数据绑定，数字和日期的format@NumberFormat,@DateTimeFormat
+    	c:xml,json的默认读写支持-->
+    <mvc:annotation-driven/>
+    
+    <!--2.静态资源默认servlet配置-->
+    <!--
+        1).加入对静态资源处理：js,gif,png
+        2).允许使用 "/" 做整体映射-->
+    
+    <mvc:default-servlet-handler/>
+
+    <!-- 设置freeMarker的配置文件路径 -->
+    <bean id="freemarkerConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <!--注释掉的下方代码是指引freemarker的基本信息的配置位置，因为我已经将配置信息移到了applicationContext文件下，所以这里就没必要存在了，不注释也不会有问题的 -->
+        <!--<property name="location" value="classpath:/WEB-INF/config/freemarker.properties" />-->
+    </bean>
+
+    <bean id="htmlViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</value>
+        </property>
+        <property name="cache"><value>true</value></property>
+        	<!--这里需要注意一下，我注释了下面这样一行代码，这行代码的意思就是指引freemarker需要解析的文件的位置。注释掉原因是因为
+         	applicationContext.xml里有这样一行代码：<property name="templateLoaderPath" value="/views/" /> 已经指定了视图位置。
+         	如果我们这里依然保留下方代码，页面回报406的找不到的错误 -->
+        	<!--<property name="prefix"><value>/views/</value></property>-->
+        <property name="suffix"><value>.html</value></property>
+        <property name="contentType">
+            <value>text/html; charset=UTF-8</value>
+        </property>
+    </bean>
+    
+   <bean id="jsonViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</value>
+        </property>
+        <property name="cache"><value>true</value></property>
+        <property name="suffix"><value>.json</value></property>
+        <property name="contentType">
+            <value>application/json; charset=UTF-8</value>
+        </property>
+    </bean>
+
+    <!-- 控制器异常处理 -->
+    <bean id="exceptionHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"/>
+    <bean class="com.sanhu.exception.DefaultExceptionHandler"/>
+</beans>

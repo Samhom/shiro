@@ -1,0 +1,18 @@
+{
+	<#if list??>
+	"rows": [
+	<#list list as user>
+	{
+		"username": "${user.username}",
+		"locked": "<#if user.locked==false>激活<#else>锁定</#if>",
+		"roles": "",
+		"desc": "${user.desc}",
+		"create_time": "${user.createTime?datetime}",
+		"last_update_time": "${user.lastUpdateTime?datetime}"
+	}
+	<#sep>,
+	</#list>
+	],
+	"total": ${size}
+	</#if>
+}

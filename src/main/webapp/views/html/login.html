@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link rel='stylesheet' href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/background.css">
+
+    <script type="text/javascript" src="assets/js/common/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/common/jquery.validate-1.13.1.js" ></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal" id="login_form" action="/Spring/doLogin" method="post">
+                    <span class="heading">用户登录</span>
+                    <div class="form-group">
+                        <input type="text" class="form-control required" id="inputEmail3" name="username" placeholder="用户名">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control required" id="inputPassword3" name="password" placeholder="密　码">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group">
+                        <div class="main-checkbox">
+                            <input type="checkbox" value="None" id="checkbox1" name="check"/>
+                            <label for="checkbox1"></label>
+                        </div>
+                        <span class="text">Remember me</span>
+                        <br>
+                        <hr/>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default pull-right">登录</button>
+                        <button type="button" class="btn btn-default pull-left" id="register_btn">注册</button>
+                    </div>
+                </form>
+
+                <form class="form-horizontal" id="register_form" style="display: none" action="/Spring/registryer" method="post">
+                    <span class="heading">用户注册</span>
+                    <div class="form-group">
+                        <input type="text" class="form-control required" name="username" placeholder="用户名">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control required" id="register_password" name="password" placeholder="密　码">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control required" type="password" placeholder="再次输入密码" name="rpassword"/>
+                    </div>
+                    <div class="form-group">
+                        <hr/>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success pull-right" value="注册"/>
+                        <input type="submit" class="btn btn-info pull-left" id="back_btn" value="返回"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html>

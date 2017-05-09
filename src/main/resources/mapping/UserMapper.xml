@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.sanhu.dao.UserDao">
+
+	<resultMap type="User" id="userMap">
+		<id property="id" column="id"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="salt" column="salt"/>
+		<result property="locked" column="locked"/>
+		<result property="desc" column="desc" />
+		<result property="createTime" column="create_time"/>
+		<result property="lastUpdateTime" column="last_update_time"/>
+	</resultMap>
+	
+	<!-- 查找所有用户 -->
+	<select id="findAllUsers" resultMap="userMap">
+		select * from sys_users limit #{offset},#{limit}
+	</select>
+	
+	<!-- 得到用户记录总数 -->
+	<select id="getAllCount" resultType="Integer">
+		select count(*) from sys_users
+	</select>
+
+	<!-- 一下午加晚上一个小时的时间花费在调登录身份验证上了，原因是没有查询salt字段 -->
+	<select id="findByUsername" resultMap="userMap" parameterType="String"> 
+		select id, username, password, salt from sys_users where username = #{name}
+	</select>
+		
+	<!-- 添加一个新用户，注册使用 -->
+    <insert id="createUser" parameterType="User">
+        INSERT INTO sys_users(username, password, salt)
+        values(
+          #{username},#{password},#{salt}
+        )
+    </insert>
+
+</mapper>

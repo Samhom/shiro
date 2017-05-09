@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sanhu Site</title>
+    
+    <link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/bootstrap/bootstrap-table.css" rel="stylesheet"/>
+    <link href="assets/css/bootstrap/font-awesome.css" rel="stylesheet"/>
+    <link href="assets/css/bootstrap/basic.css" rel="stylesheet"/>
+    <link href="assets/css/bootstrap/custom.css" rel="stylesheet"/>
+    
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+</head>
+
+<body>
+<div class="main-content">
+	<div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <span class="navbar-brand">**权限管理系统</span>
+            </div>
+
+            <div class="header-right">
+                <a href="message-task.html" class="btn btn-info" title="新系统消息"><b>30</b><i class="fa fa-envelope-o fa-2x"></i></a>
+                <a href="message-task.html" class="btn btn-primary" title="系统工作流"><b>40</b><i class="fa fa-bars fa-2x"></i></a>
+                <a href="logout.html" class="btn btn-danger" title="退出登录"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+            </div>
+        </nav>	
+        
+        <!-- 侧边栏 开始-->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
+                            <img src="assets/img/user.png" class="img-thumbnail"/>
+                            <div class="inner-text">${user.username!"游客"}<br/>
+                            <small>Last Login : 2 Weeks Ago </small>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-cog fa-spin fa-fw"></i>系统权限<span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#" data-url="rbac/users/index.html"><i class="fa fa-user-circle"></i>用户维护</a>
+                            </li>
+                            <li>
+                                <a href="#" data-url=""><i class="fa fa-users"></i>角色维护</a>
+                            </li>
+                             <li>
+                                <a href="#" data-url=""><i class="fa fa-connectdevelop"></i>权限授权</a>
+                            </li>
+                             <li>
+                                <a href="#" data-url=""><i class="fa fa-code"></i>修改密码</a>
+                            </li>
+                        </ul>
+                    </li>
+                 </ul>
+			</div>
+		</nav>
+		<!-- 左侧栏结束 -->
+		
+		<!-- 初始页面内容开始 -->
+		<div id="page-wrapper">
+            <div id="page-inner" class="page-content">
+           	   <!-- row1开始 -->
+           	   <div class="row">
+                  <div class="col-md-12">
+                      <h1 class="page-head-line">欢迎登录！</h1>
+                      <h1 class="page-subhead-line">充满着欢乐与斗争精神的人们，永远带着欢乐，欢迎雷霆与阳光。</h1>
+                  </div>
+               </div>
+               <!-- row1结束 -->
+               
+               <!-- row2开始 -->
+               <div class="row">
+               	<div class="col-md-12">
+                    <div id="reviews" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <h4><i class="fa fa-quote-left"></i>在我的后园，可以看见墙外有两株树，一株是枣树，还有一株也是枣树。<i class="fa fa-quote-right"></i></h4>
+                                    <div class="user-img pull-right">
+                                        <img src="assets/img/luxun.png" alt="" class="img-u image-responsive" />
+                                    </div>
+                                    <h5 class="pull-right"><strong class="c-black">鲁迅</strong></h5>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-md-10 col-md-offset-1">
+
+                                    <h4><i class="fa fa-quote-left"></i>你以为躲起来就找不到你了吗?没有用的!象你这样出色的男人,无论在什么地方,都像漆黑中的萤火虫一样,那样的鲜明,那样的出众。<i class="fa fa-quote-right"></i></h4>
+                                    <div class="user-img pull-right">
+                                        <img src="assets/img/zhouxingchi.png" alt="" class="img-u image-responsive" />
+                                    </div>
+                                    <h5 class="pull-right"><strong class="c-black">周星驰</strong></h5>
+                                </div>
+
+                            </div>
+                            <div class="item">
+                                <div class="col-md-10 col-md-offset-1">
+
+                                    <h4><i class="fa fa-quote-left"></i>文明其精神，野蛮其体魄！<i class="fa fa-quote-right"></i></h4>
+                                    <div class="user-img pull-right">
+                                        <img src="assets/img/maozedong.png" alt="" class="img-u image-responsive" />
+                                    </div>
+                                    <h5 class="pull-right"><strong class="c-black">毛泽东</strong></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <!--INDICATORS-->
+                        <ol class="carousel-indicators">
+                            <li data-target="#reviews" data-slide-to="0" class="active"></li>
+                            <li data-target="#reviews" data-slide-to="1"></li>
+                            <li data-target="#reviews" data-slide-to="2"></li>
+                        </ol>
+                        <!--PREVIUS-NEXT BUTTONS-->
+                    </div>
+                    <hr />
+                    <div class="panel panel-default">
+                        <div id="carousel-example" class="carousel slide" data-ride="carousel" style="border: 5px solid #000;">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="assets/img/slideshow/1.jpg" alt="" />
+                                </div>
+                                <div class="item">
+                                    <img src="assets/img/slideshow/2.jpg" alt="" />
+                                </div>
+                                <div class="item">
+                                    <img src="assets/img/slideshow/3.jpg" alt="" />
+                                </div>
+                                <div class="item">
+                                    <img src="assets/img/slideshow/4.jpg" alt="" />
+                                </div>
+                                <div class="item">
+                                    <img src="assets/img/slideshow/5.jpg" alt="" />
+                                </div>
+                                <div class="item">
+                                    <img src="assets/img/slideshow/6.jpg" alt="" />
+                                </div>
+                            </div>
+                            <!--INDICATORS-->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example" data-slide-to="1"></li>
+                                <li data-target="#carousel-example" data-slide-to="2"></li>
+                                <li data-target="#carousel-example" data-slide-to="3"></li>
+                                <li data-target="#carousel-example" data-slide-to="4"></li>
+                                <li data-target="#carousel-example" data-slide-to="5"></li>
+                            </ol>
+                            <!--PREVIUS-NEXT BUTTONS-->
+                            <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+            	</div>
+               </div>
+               <!-- row2结束  -->
+               
+               <!-- row3开始 -->
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <div class="main-box mb-red">
+	                        <a href="https://weixin.qq.com/">
+	                            <i class="fa fa-weixin fa-5x"></i>
+	                            <h5>Wechat</h5>
+	                        </a>
+	                    </div>
+	                </div>
+	                <div class="col-md-4">
+	                    <div class="main-box mb-dull">
+	                        <a href="http://finance.qq.com/">
+	                            <i class="fa fa-qq fa-5x"></i>
+	                            <h5>QQ</h5>
+	                        </a>
+	                    </div>
+	                </div>
+	                <div class="col-md-4">
+	                    <div class="main-box mb-pink">
+	                        <a href="https://www.google.com">
+	                            <i class="fa fa-chrome fa-5x"></i>
+	                            <h5>Google</h5>
+	                        </a>
+	                    </div>
+	                </div>
+				</div>
+				<!-- row3结束 -->
+           </div>
+       </div>
+       <!-- 初始页面内容结束 -->
+   </div>
+    	</div>
+    <!-- 页脚 -->
+    <div id="footer-sec">
+        	生命旅程，往复不息，每个梦，都会有你...
+    </div>
+    
+<script src="assets/js/common/jquery.min.js"></script>
+<script src="assets/js/bootstrap/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap/bootstrap-table.js"></script>
+<script src="assets/js/bootstrap/bootstrap-table-zh-CN.js"></script>
+
+<script src="assets/js/require.js"></script>
+
+<script src="assets/js/common/jquery.metisMenu.js"></script>
+<script src="assets/js/common/custom.js"></script>
+
+    <script type="text/javascript">
+		$("li a[data-url]").each(function(i, obj){
+			$(this).on('click', function(){
+				/* if($(this).parent("li").hasClass("active")){
+					return ;
+				}else { */
+					var url = $(this).attr("data-url");
+					$("sidebar-collapse li.active").removeClass("active");
+					$("div.page-content").empty();
+					$(this).parent().addClass("active");
+					$("div.page-content").load(url);
+				/* } */
+			});
+		})
+	</script>
+	
+</body>
+</html>
